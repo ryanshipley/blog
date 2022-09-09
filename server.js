@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const authorsController = require('./controllers/authors.js');
+const articlesController = require("./controllers/articles.js");
 require('dotenv').config();
 const mongoose = require('mongoose');
 const methodOverride = require("method-override");
@@ -21,6 +22,7 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 app.use('/authors', authorsController);
+app.use("/articles", articlesController);
 
 app.get('/', (req, res) => {
     res.render('index.ejs');
