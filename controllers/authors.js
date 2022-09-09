@@ -19,4 +19,16 @@ router.post('/', (req, res) => {
     });
 });
 
+
+
+
+
+router.get('/:id', (req, res) => {
+    Author.findById(req.params.id, (err, foundAuthor) => {
+        res.render('authors/show.ejs', {
+            author: foundAuthor
+        });
+    });
+});
+
 module.exports = router;
