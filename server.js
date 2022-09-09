@@ -1,14 +1,13 @@
 const express = require('express');
 const app = express();
 const authorsController = require('./controllers/authors.js');
-app.use('/authors', authorsController);
 require('dotenv').config();
 const mongoose = require('mongoose');
 const methodOverride = require("method-override");
 
 
 mongoose.connect(process.env.DATABASE_URL, {
-	useNewUrlParser: true,
+    useNewUrlParser: true,
 	useUnifiedTopology: true,
 	//useFindAndModify: false,
 	//useCreateIndex: true,
@@ -21,6 +20,7 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
+app.use('/authors', authorsController);
 
 app.get('/', (req, res) => {
     res.render('index.ejs');
