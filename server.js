@@ -10,8 +10,6 @@ const methodOverride = require("method-override");
 mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
 	useUnifiedTopology: true,
-	//useFindAndModify: false,
-	//useCreateIndex: true,
 });
 
 const db = mongoose.connection;
