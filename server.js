@@ -18,6 +18,8 @@ db.on('error', (err) => console.log(err.message + ' is mongod not running?'));
 db.on('connected', () => console.log('mongo connected'));
 db.on('disconnected', () => console.log('mongo disconnected'));
 
+app.use(express.urlencoded({ extended: false }));
+
 app.get('/', (req, res) => {
     res.render('index.ejs');
 });
