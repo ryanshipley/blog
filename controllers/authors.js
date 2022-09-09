@@ -13,6 +13,12 @@ router.get('/new', (req, res) => {
     res.render('authors/new.ejs');
 });
 
+router.delete('/:id', (req, res) => {
+    Author.findByIdAndRemove(req.params.id, () => {
+        res.redirect('/authors');
+    });
+});
+
 router.post('/', (req, res) => {
     Author.create(req.body, (err, createdAuthor) => {
         res.redirect('/authors');
